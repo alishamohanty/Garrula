@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+from chuck import ChuckNorris
 import datetime
 
 file=open("output.txt","r")
@@ -44,7 +45,11 @@ else :
     #write in text-box
     time.sleep(5)
     el = driver.find_element_by_id('tweet-box-home-timeline')
-    el.send_keys("File write test")  #Todo: Pass string from APIs here
+    cn = ChuckNorris()
+    data = str(cn.random())
+    while len(data) > 280:
+        data = cn.random()
+    el.send_keys(data)  #Todo: Pass string from APIs here
     time.sleep(5)
     el = driver.find_element_by_class_name('tweet-action')
     el.click()
