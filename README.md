@@ -1,7 +1,8 @@
 # Garrula
 Garrula is a twitter bot used for posting jokes and quotes.
-
-## Requirements :
+[Follow us](https://twitter.com/Garrula1) for quotes and jokes everyday.
+## Project details
+### Requirements :
 - Twitter Account
 - Python
 - External Libs :
@@ -9,7 +10,7 @@ Garrula is a twitter bot used for posting jokes and quotes.
     -  [Chromedriver](http://chromedriver.chromium.org/)
     -  [geckodriver](https://github.com/mozilla/geckodriver/releases)(for Firefox)
     -  Add geckodriver.exe to System PATH in Environment Variables
-         - For Linux :-                     [follow this](https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu)
+         - For Linux :                    [follow this](https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu)
          - Clone / Download the repository [Garrula](https://github.com/alishamohanty/Garrula.git)
               - Run
                 ```
