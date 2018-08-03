@@ -6,25 +6,26 @@ import time
 
 #acc login info
 uname = 'phantomfive11@gmail.com'
-upass = '<password-goes-here>'       #ONLY ENTER PASSWORD WHILE TESTING THIS , DO NOT COMMIT BY MISTAKE EVEN WITH THE ORIGINAL PASSWORD IN CODE
+upass = '<enter-passwd-here>'       #ONLY ENTER PASSWORD WHILE TESTING THIS , DO NOT COMMIT BY MISTAKE EVEN WITH THE ORIGINAL PASSWORD IN CODE
 
 #launch firefox
 driver = webdriver.Firefox()
-driver.get("https://www.twitter.com")
+driver.get("https://www.twitter.com/login")
 wait = WebDriverWait(driver, 10)
 
 #enter email
-user = wait.until(EC.visibility_of_element_located((By.NAME, "session[username_or_email]")))
+user = wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div/div/div[1]/form/fieldset/div[1]/input")))
 user.clear()
 user.send_keys(uname)
 
 #enter password
-passw = wait.until(EC.visibility_of_element_located((By.NAME, "session[password]")))
+passw = wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div/div/div[1]/form/fieldset/div[2]/input")))
 passw.clear()
 passw.send_keys(upass)
 
 #press login button
-el=driver.find_element_by_class_name('EdgeButton')
+time.sleep(5)
+el=driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div/div[1]/form/div[2]/button")
 el.click()
 
 
