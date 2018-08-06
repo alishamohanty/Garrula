@@ -3,8 +3,45 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-from chuck import ChuckNorris
 import datetime
+import wikiquotes
+from chuck import ChuckNorris
+import random
+
+st=random.randint(0,1)
+def post(st):
+    n=random.randint(0,2)
+    if st is 0:
+        t=tags1(n)
+        rt=str((wikiquotes.quote_of_the_day("english")[0]))
+        #print(rt+t)
+        return (rt+t)
+
+    else:
+        t=tags2(n)
+        cn=ChuckNorris()
+        data=str(cn.random())
+        while len(data)>270:
+            data=cn.random()
+        #print(data+t)
+        return (data+t)
+def tags2(n):
+    if n is 0:
+        return ("#jokeoftheday")
+    elif n is 1:
+        return ("#funmood")
+    else:
+        return ("#instaquote")
+def tags1(n):
+    if n is 0:
+        return ("#wisdom")
+    elif n is 1:
+        return("#positivity")
+    else:
+        return ("#lifelesson")
+
+data1=post(st)
+print(data1)
 
 file=open("output.txt","r")
 f=file.read()
@@ -17,7 +54,7 @@ if f == str(datetime.date.today()):
 else :
     #acc login info
     uname = 'phantomfive11@gmail.com'
-    upass = '<enter-passwd-here>'           #ONLY ENTER PASSWORD WHILE TESTING THIS , DO NOT COMMIT BY MISTAKE EVEN WITH THE ORIGINAL PASSWORD IN CODE
+    upass = '<enter-passwd-here>'           #pseudopassword in place , replace with correct password for testing
 
     #launch firefox
     driver = webdriver.Firefox()
@@ -45,11 +82,7 @@ else :
     #write in text-box
     time.sleep(5)
     el = driver.find_element_by_id('tweet-box-home-timeline')
-    cn = ChuckNorris()
-    data = str(cn.random())
-    while len(data) > 280:
-        data = cn.random()
-    el.send_keys(data)  #Todo: Pass string from APIs here
+    el.send_keys(data1)  #Todo: Pass string from APIs here
     time.sleep(5)
     el = driver.find_element_by_class_name('tweet-action')
     el.click()
