@@ -2,12 +2,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 import time
 import datetime
 import wikiquotes
 from chuck import ChuckNorris
 import random
 
+options = Options()
+options.set_headless(headless=True)
 st=random.randint(0,1)
 def post(st):
     n=random.randint(0,2)
@@ -57,7 +60,7 @@ else :
     upass = '<enter-passwd-here>'           #pseudopassword in place , replace with correct password for testing
 
     #launch firefox
-    driver = webdriver.Firefox()
+    driver = webdriver.Firefox(firefox_options=options)
     driver.get("https://www.twitter.com/login")
     wait = WebDriverWait(driver, 10)
 
@@ -90,5 +93,6 @@ else :
     file.write(str(datetime.date.today()))
     file.close()
     print("Success")
+    driver.close()
 
 
